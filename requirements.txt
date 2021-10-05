@@ -1,0 +1,9 @@
+click
+pypandoc
+anytree
+bunch
+jinja2
+pyyaml
+sphinx
+myst_parser
+linkify-it-py
