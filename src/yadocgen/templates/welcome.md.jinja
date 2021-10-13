@@ -1,0 +1,13 @@
+```{toctree}
+   :hidden:
+   :maxdepth: 2
+
+{% for page in pages %}
+{{ page.page_name() }}{% endfor %}
+{% if api is not none %}{{ api.page_name() }}{% endif %}
+```
+
+```{include} {{ file }}
+:relative-docs: ../../
+:relative-images:
+```
