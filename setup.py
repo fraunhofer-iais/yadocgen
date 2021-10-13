@@ -17,9 +17,10 @@ setup(
     author="Ben Wulff",
     author_email="benjamin.wulff@iais.fraunhofer.de",
     url="https://github.com/fraunhofer-iais/yadocgen",
-    packages=["yadocgen"],
-    package_dir={"yadocgen": "src/yadocgen"},
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     include_package_data=True,
+    package_data={"yadocgen.templates": ["*.jinja"]},
     install_requires=load_requirements(),
     entry_points="""
         [console_scripts]
