@@ -46,7 +46,7 @@ def cli():
 )
 @click.option(
     "--theme",
-    default="alabaster",
+    default="karma_sphinx_theme",
     envvar="YDG_THEME",
     prompt="Sphinx template",
     help="Sphinx theme to use (default: alabaster)",

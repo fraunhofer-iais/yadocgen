@@ -7,3 +7,4 @@ pyyaml
 sphinx
 myst_parser
 linkify-it-py
+karma-sphinx-theme
