@@ -34,10 +34,11 @@ Output directory [sphinx]:
 ```
 
 Once initialized you can (re-)generate your documentation using the `generate` subcommand and then use the Sphinx Makefile to compile it
-````shell
+```shell
 $ yadocgen init
 $ cd sphinx
 $ make html
 
 ```
+
 ..then you will find your documentation in `sphinx/build`.
