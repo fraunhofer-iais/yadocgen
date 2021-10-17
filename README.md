@@ -8,7 +8,7 @@ Highlights
 - use [numpy style](https://numpydoc.readthedocs.io/en/latest/format.html) docstrings
 - use your README.md as the welcome page
 - use all the goodness that [Sphinx](https://www.sphinx-doc.org/) and [myst_parser](https://myst-parser.readthedocs.io/en/latest/index.html) provide
-    - $ and $$ math environments
+    - `$` and `$$` math environments
     - (literature) references
     - figures and tables
     - definition block
