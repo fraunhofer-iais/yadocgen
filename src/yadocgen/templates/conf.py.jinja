@@ -1,5 +1,6 @@
 # yadocgen Sphinx config
 
+import sphinx
 {% if config.add_paths %}
 import os
 import sys
@@ -46,6 +47,11 @@ myst_enable_extensions = [
 ]
 myst_dmath_double_inline = True   # enable support for inline $$-blocks 
 myst_heading_anchors = 4          # enable automatic anchor generation down to n-th level headings
+if sphinx.version_info[0] <= 3:
+    mathjax_config = {"tex2jax": {"processClass": "other"}}
+else:
+    mathjax3_config = {"options": {"processHtmlClass": "other"}}
+myst_update_mathjax=False
 
 ## Markdown jinja2 style substitutions 
 ## e.g. {{ institute_long }} or {{ institute_short }}
