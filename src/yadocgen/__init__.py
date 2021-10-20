@@ -12,6 +12,9 @@ from anytree import Node, RenderTree, Resolver, PreOrderIter
 
 from yadocgen.generator import generate_documentation
 
+# include for example purposes
+from yadocgen.example import foo
+
 
 @click.group()
 def cli():
@@ -80,7 +83,25 @@ def cli():
     help="directory for generated documentation files",
 )
 def init(work_dir, src_dir, doc_dir, output, name, author, version, theme, welcome):
-    """Sets up the Sphinx documentation for a project."""
+    r"""Initialize yadocgen for a project.
+
+    This function takes the parameters, either from command line, prompt or 
+    environment variables and creates the necessary directories and the
+    configuration file.
+
+    Parameters:
+    -----------
+    work_dir
+    src_dir
+    doc_dir
+    output
+    name
+    author
+    version
+    theme
+    welcome
+
+    """
 
     # build copyright string
     date = datetime.date.today()
