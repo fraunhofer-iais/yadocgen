@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="doc/img/ydg_logo.png" />
+</p>
+
 # Yet Another Documentation Generator
 
 This is a documentation generator that makes effortlessly accessible what I like and use often from Sphinx. 
