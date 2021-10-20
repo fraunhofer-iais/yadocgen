@@ -19,12 +19,6 @@ Highlights
     - footnotes
     - admonitions
 
-
-$$
-f(x) = \frac{L}{1 + e^{-k(x-x_0)}}
-$$(lbl:one)
-
-
 ## Usage
 
 Initialize the project using the `init` subcommand in the root directory of your repo and answer the questions
