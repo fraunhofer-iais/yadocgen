@@ -17,6 +17,15 @@ Highlights
     - footnotes
     - admonitions
 
+## Installation
+
+The tool is available as a package on PyPI. You can install it using pip
+
+```shell
+pip install yadocgen
+
+```
+
 ## Usage
 
 Initialize the project using the `init` subcommand in the root directory of your repo and answer the questions
