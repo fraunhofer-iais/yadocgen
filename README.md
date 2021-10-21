@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="doc/img/ydg_logo.png" />
-</p>
+![yaDocGen Logo](doc/img/ydg_logo.png)
 
 # Yet Another Documentation Generator
 
