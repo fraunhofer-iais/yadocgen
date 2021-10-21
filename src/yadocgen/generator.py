@@ -4,7 +4,7 @@ import shutil
 import pkgutil
 from os import path
 from yadocgen.rendering import *
-from anytree import Node, Resolver, RenderTree, PreOrderIter
+from anytree import Node, Resolver, RenderTree, PreOrderIter, ContRoundStyle
 
 
 def walk_packages_error(name):
@@ -37,34 +37,31 @@ def generate_documentation(work_dir, purge, config):
     sphinx_dir = path.join(work_dir, config.output_dir)
     sphinx_source_dir = path.join(sphinx_dir, "source")
 
-    # purge Sphinx source directory but keep Sphinx config
-    if purge:
-        print("purging Sphinx source directory")
-        for f in os.listdir(sphinx_source_dir):
-            if os.path.isfile(f) and not f == "conf.py":
-                    os.remove(os.path.join(root, f))
-            # for d in dirs:
-            #     os.remove(os.path.join(root, d))
-
     pages = []
+    bibfiles = []
 
     # scan contents from doc directory
     if not config.doc_dir is None:
         doc_dir = path.join(work_dir, config.doc_dir)
-        print(f"Documentation pages (from {doc_dir}):\n")
+        print(f"\nDocumentation pages (from {doc_dir}):\n")
         for f in os.listdir(doc_dir):
-            if os.path.isfile(os.path.join(doc_dir, f)) and f.lower().endswith(".md"):
-                # add a documentation page
-                pages.append(DocPage(config.doc_dir, f))
-                print(f" - {f}")
+            if os.path.isfile(os.path.join(doc_dir, f)):
+                if f.lower().endswith(".md"):
+                    # add a documentation page
+                    pages.append(DocPage(config.doc_dir, f))
+                    print(f" - {f}")
+                elif f.lower().endswith(".bib"):
+                    # add a documentation page
+                    bibfiles.append(f)
 
     # find packages in source path
     if config.src_dir is not None:
         src_dir = path.join(work_dir, config.src_dir)
         sys.path.insert(0, src_dir)                    # add path to sys.path so that pkgtools can load package definitions
         src_pages = find_modules(where=src_dir)
-        print(f"Source tree (from: {src_dir}):\n")
-        print(RenderTree(src_pages).by_attr("name") + "\n")
+        print(f"\nSource tree (from: {src_dir}):\n")
+        for row in RenderTree(src_pages, style=ContRoundStyle()):
+            print(f" {row.pre}{row.node.name}")
         for node in PreOrderIter(src_pages):
             if node is not src_pages:  # src_pages is root element so we skip it
                 # add a source code documentation page
@@ -83,10 +80,27 @@ def generate_documentation(work_dir, purge, config):
         )
     )
 
+    # purge Sphinx source directory but keep Sphinx config
+    if purge:
+        print("\nPurging Sphinx source directory...", end="")
+        for f in os.listdir(sphinx_source_dir):
+            if os.path.isfile(f) and not f == "conf.py":
+                    os.remove(os.path.join(root, f))
+    print("done")
+
     # generate Sphinx files
-    print("Generating files:")
+    print("\nGenerating files:\n")
     for page in pages:
         print(f" - {page.output_filename()}")
         with open(path.join(sphinx_source_dir, page.output_filename()), "w") as f:
             f.write(page.render())
 
+    # copy BibTeX files
+    if len(bibfiles) > 0:
+        print("\nCopying BibTeX files:\n")
+        for f in bibfiles:
+            print(f" - {f}")
+            shutil.copyfile(
+                os.path.abspath(os.path.join(doc_dir, f)),
+                os.path.abspath(os.path.join(sphinx_source_dir, f))
+                )

@@ -19,7 +19,7 @@ from yadocgen.example import foo
 @click.group()
 def cli():
     """Yet Another Documentation Generator"""
-    pass
+    print("yaDocGen v0.1.0-beta")
 
 
 @cli.command()
@@ -179,7 +179,9 @@ def generate(work_dir, purge):
     with open(config_file_path, "r") as f:
         CONFIG = yaml.full_load(f)
 
-    # if overwrite option is set remove an existing output dir, quit otherwise
-    # TODO check if build/source are populated and warn if purge=False, purge otherwise
-
     generate_documentation(work_dir, purge, CONFIG)
+
+
+def configure_bibfiles():
+    ## TODO check if it is always valid to perform this on current work dir!
+    return [f for f in os.listdir(".") if os.path.isfile(f) and f.lower().endswith(".bib")]
