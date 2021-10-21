@@ -6,6 +6,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 def dots_to_underscores(s):
     return "_".join(s.split("."))
 
+
 jinja = Environment(loader=PackageLoader("yadocgen", "templates"))
 jinja.globals["dots_to_underscores"] = dots_to_underscores
 
@@ -30,7 +31,7 @@ class Page(ABC):
 class DocPage(Page):
     def __init__(self, fpath, fname):
         super().__init__()
-        self.fpath = fpath 
+        self.fpath = fpath
         self.fname = fname
 
     def page_name(self):
@@ -38,14 +39,14 @@ class DocPage(Page):
         return f"doc_{name}"
 
     def output_filename(self):
-        return self.page_name() + ".md" 
+        return self.page_name() + ".md"
 
     def render(self):
         template = jinja.get_template("docpage.md.jinja")
         return template.render(
-            file=os.path.join("..", "..", self.fpath, self.fname), 
-            doc_dir=self.fpath, 
-            img_doc=os.path.join(self.fpath, "img")
+            file=os.path.join("..", "..", self.fpath, self.fname),
+            doc_dir=self.fpath,
+            img_doc=os.path.join(self.fpath, "img"),
         )
 
 
@@ -74,7 +75,7 @@ class WelcomePage(Page):
     def __init__(self, welcome_page, pages, api_index):
         super().__init__()
         self.welcome_page = welcome_page
-        self.pages = pages 
+        self.pages = pages
         self.api_index = api_index
 
     def page_name(self):
@@ -85,7 +86,11 @@ class WelcomePage(Page):
 
     def render(self):
         template = jinja.get_template("welcome.md.jinja")
-        return template.render(file=os.path.join("..", "..", self.welcome_page), pages=self.pages, api=self.api_index)
+        return template.render(
+            file=os.path.join("..", "..", self.welcome_page),
+            pages=self.pages,
+            api=self.api_index,
+        )
 
 
 class APIPage(Page):

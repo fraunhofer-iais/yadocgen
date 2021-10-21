@@ -57,7 +57,9 @@ def generate_documentation(work_dir, purge, config):
     # find packages in source path
     if config.src_dir is not None:
         src_dir = path.join(work_dir, config.src_dir)
-        sys.path.insert(0, src_dir)                    # add path to sys.path so that pkgtools can load package definitions
+        sys.path.insert(
+            0, src_dir
+        )  # add path to sys.path so that pkgtools can load package definitions
         src_pages = find_modules(where=src_dir)
         print(f"\nSource tree (from: {src_dir}):\n")
         for row in RenderTree(src_pages, style=ContRoundStyle()):
@@ -74,9 +76,9 @@ def generate_documentation(work_dir, purge, config):
     # add the wecome page
     pages.append(
         WelcomePage(
-            config.sphinx_config.welcome, 
+            config.sphinx_config.welcome,
             [p for p in pages if type(p) is DocPage],
-            api_index
+            api_index,
         )
     )
 
@@ -85,7 +87,7 @@ def generate_documentation(work_dir, purge, config):
         print("\nPurging Sphinx source directory...", end="")
         for f in os.listdir(sphinx_source_dir):
             if os.path.isfile(f) and not f == "conf.py":
-                    os.remove(os.path.join(root, f))
+                os.remove(os.path.join(root, f))
     print("done")
 
     # generate Sphinx files
@@ -102,5 +104,5 @@ def generate_documentation(work_dir, purge, config):
             print(f" - {f}")
             shutil.copyfile(
                 os.path.abspath(os.path.join(doc_dir, f)),
-                os.path.abspath(os.path.join(sphinx_source_dir, f))
-                )
+                os.path.abspath(os.path.join(sphinx_source_dir, f)),
+            )

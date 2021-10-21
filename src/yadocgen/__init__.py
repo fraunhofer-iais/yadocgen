@@ -52,7 +52,7 @@ def cli():
     default="karma_sphinx_theme",
     envvar="YDG_THEME",
     prompt="Sphinx template",
-    help="Sphinx theme to use (default: alabaster)",
+    help="Sphinx theme to use (default: karma)",
 )
 @click.option(
     "--welcome",
@@ -85,7 +85,7 @@ def cli():
 def init(work_dir, src_dir, doc_dir, output, name, author, version, theme, welcome):
     r"""Initialize yadocgen for a project.
 
-    This function takes the parameters, either from command line, prompt or 
+    This function takes the parameters, either from command line, prompt or
     environment variables and creates the necessary directories and the
     configuration file.
 
@@ -164,7 +164,7 @@ def init(work_dir, src_dir, doc_dir, output, name, author, version, theme, welco
 @click.option(
     "--purge",
     default=True,
-    help="Clean out Sphinx source and build directory (default: True)",
+    help="Clean Sphinx source (default: True)",
 )
 def generate(work_dir, purge):
     """Generates the documentation for a project."""
@@ -173,9 +173,7 @@ def generate(work_dir, purge):
     # load project config
     config_file_path = os.path.join(work_dir, ".yadocgen")
     if not os.path.isfile(config_file_path):
-        print(
-            "yadocgen config file not found in working directory. use init sub-command to create one."
-        )
+        print(f"Config file not found in working directory ({config_file_path}).")
     with open(config_file_path, "r") as f:
         CONFIG = yaml.full_load(f)
 
@@ -184,4 +182,6 @@ def generate(work_dir, purge):
 
 def configure_bibfiles():
     ## TODO check if it is always valid to perform this on current work dir!
-    return [f for f in os.listdir(".") if os.path.isfile(f) and f.lower().endswith(".bib")]
+    return [
+        f for f in os.listdir(".") if os.path.isfile(f) and f.lower().endswith(".bib")
+    ]
