@@ -13,7 +13,7 @@ def load_requirements():
 setup(
     name="yadocgen",
     version="0.1.0",
-    description="",
+    description="Yet Another Documentation Generator",
     author="Ben Wulff",
     author_email="benjamin.wulff@iais.fraunhofer.de",
     url="https://github.com/fraunhofer-iais/yadocgen",
