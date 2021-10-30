@@ -1,6 +1,6 @@
 ![yaDocGen Logo](doc/img/ydg_logo.png)
 
-![Publish action badge](https://github.com/fraunhofer-iais/yadocgen/actions/workflows/python-publish.yml/badge.svg)
+![Publish action badge](https://github.com/fraunhofer-iais/yadocgen/actions/workflows/main.yml/badge.svg)
 
 This is a documentation generator that makes effortlessly accessible what I like and use often from Sphinx. 
 
