@@ -13,12 +13,16 @@ jobs:
     steps:
       - name: Install development tools
         run: sudo apt update && sudo apt install git python3 python3-pip
-      - name: update pip to latest version, install twine and setuptools
+      - name: Update pip to latest version, install twine and setuptools
         run: pip3 install --upgrade pip twine setuptools
       - uses: actions/checkout@v2
-      - name: install dependencies
+      - name: Install dependencies
         run: pip3 install -r requirements.txt
-      - name: build source distribution
+      - name: Build source distribution
         run: python3 setup.py sdist
-        
+      - name: Publish a Python distribution to PyPI
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
       
