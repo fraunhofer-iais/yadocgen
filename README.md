@@ -1,4 +1,4 @@
-___NOTE:___ Because the pip guys broke pip gives some error [about version in filename and metadata being inconsisten](https://github.com/pypa/pip/issues/9203) (it's closed but it still doesn't work!) and I'm not willing to dive into this:  __download the source repository and install locally!__
+___NOTE:___ Because the pip guys broke pip, it gives some error [about version in filename and metadata being inconsisten](https://github.com/pypa/pip/issues/9203) (it's closed but it still doesn't work!) and I'm not willing to dive into this because I regard my time to valuable for it:  __download the source repository and install locally!__
 
 ![yaDocGen Logo](doc/img/ydg_logo.png)
 
