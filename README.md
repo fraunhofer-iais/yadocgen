@@ -21,10 +21,10 @@ Highlights
 
 ## Installation
 
-The tool is available as a package on PyPI. You can install it using pip
+The tool is available as a package on PyPI. You can install it by downloading the source code and then
 
 ```shell
-pip install yadocgen
+pip install --upgrade .
 
 ```
 
