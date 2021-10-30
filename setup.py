@@ -9,10 +9,19 @@ def load_requirements():
         print("WARNING: requirements.txt not found")
         return []
 
-
+    
+def load_version():
+    try:
+        with open("./VERSION") as f:
+            return f.readline().strip()
+    except FileNotFoundError:
+        print("WARNING: VERSION file not found")
+        return "unknown"
+    
+    
 setup(
     name="yadocgen",
-    version="0.1.0",
+    version=load_version(),
     description="Yet Another Documentation Generator",
     author="Ben Wulff",
     author_email="benjamin.wulff@iais.fraunhofer.de",
