@@ -1,3 +1,5 @@
+Because pip is broken, download the source code and install locally.
+
 ![yaDocGen Logo](doc/img/ydg_logo.png)
 
 ![Publish action badge](https://github.com/fraunhofer-iais/yadocgen/actions/workflows/main.yml/badge.svg)
