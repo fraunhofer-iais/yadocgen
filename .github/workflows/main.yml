@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: pip3 install -r requirements.txt
       - name: Build source distribution
-        run: python3 setup.py sdist
+        run: python3 setup.py bdist_wheel sdist
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
