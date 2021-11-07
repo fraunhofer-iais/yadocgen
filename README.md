@@ -1,5 +1,3 @@
-Because pip is broken, download the source code and install locally.
-
 ![yaDocGen Logo](doc/img/ydg_logo.png)
 
 ![Publish action badge](https://github.com/fraunhofer-iais/yadocgen/actions/workflows/main.yml/badge.svg)
@@ -21,10 +19,10 @@ Highlights
 
 ## Installation
 
-The tool is available as a package on PyPI. You can install it by downloading the source code and then
+The tool is available as a package on PyPI. You can install it via PIP
 
 ```shell
-pip install --upgrade .
+pip install yadocgen
 
 ```
 
