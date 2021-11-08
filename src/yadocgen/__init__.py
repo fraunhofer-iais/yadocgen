@@ -19,7 +19,7 @@ from yadocgen.example import foo
 @click.group()
 def cli():
     """Yet Another Documentation Generator"""
-    print("yaDocGen v0.1.0-beta")
+    print("yaDocGen v0.1.5")
 
 
 @cli.command()
