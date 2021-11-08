@@ -11,3 +11,4 @@ karma-sphinx-theme
 sphinxcontrib-bibtex
 numpy
 matplotlib
+numpydoc
