@@ -10,3 +10,4 @@ linkify-it-py
 karma-sphinx-theme
 sphinxcontrib-bibtex
 numpy
+matplotlib
